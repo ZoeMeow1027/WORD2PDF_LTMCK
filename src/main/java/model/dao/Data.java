@@ -98,4 +98,30 @@ public class Data {
             return null;
         }
     }
+
+    public void setStatusResult(Integer ID, Integer result) {
+        try {
+            // If result code is not from below code, return
+            List<Integer> acceptable = new ArrayList<Integer>();
+            acceptable.add(-1); // Error
+            acceptable.add(0); // Pending
+            acceptable.add(1); // Converting
+            acceptable.add(2); // Successful
+            if (!acceptable.contains(result))
+                return;
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                model.dao.ConnectInfo.url,
+                model.dao.ConnectInfo.dbuser,
+                model.dao.ConnectInfo.dbpass
+            );
+            String query = "UPDATE pdf2xls SET Result = " + result.toString() + " WHERE ID = " + ID.toString();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.execute();
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
 }

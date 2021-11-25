@@ -18,4 +18,8 @@ public class Data {
     public PDF2XLS getStatusByID(Integer ID) {
         return data.getStatusByID(ID);
     }
+
+    public void setStatusResult(Integer ID, Integer result) {
+        data.setStatusResult(ID, result);
+    }
 }
