@@ -4,12 +4,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.bean.PDF2XLS;
+import model.bean.WORD2PDF;
 
 public class Data {
-    public List<PDF2XLS> getStatusFromUser(String user) {
+    public List<WORD2PDF> getStatusFromUser(String user) {
         try {
-            List<PDF2XLS> list = new ArrayList<PDF2XLS>();
+            List<WORD2PDF> list = new ArrayList<WORD2PDF>();
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
@@ -18,11 +18,11 @@ public class Data {
                 model.dao.ConnectInfo.dbpass
             );    
             Statement stmt = con.createStatement();
-            String query = "SELECT * FROM PDF2XLS WHERE User = '" + user + "'";
+            String query = "SELECT * FROM WORD2PDF WHERE User = '" + user + "'";
             ResultSet rs = stmt.executeQuery(query);         
 
             while (rs.next()) {
-                PDF2XLS item = new PDF2XLS();
+                WORD2PDF item = new WORD2PDF();
                 item.setID(rs.getInt("ID"));
                 item.setUser(rs.getString("User"));
                 item.setSourceName(rs.getString("SourceName"));
@@ -41,7 +41,7 @@ public class Data {
         }
     }
 
-    public void addStatus(PDF2XLS pdf) {
+    public void addStatus(WORD2PDF pdf) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
@@ -50,7 +50,7 @@ public class Data {
                 model.dao.ConnectInfo.dbpass
             );
             // https://stackoverflow.com/a/10167435    
-            String query = "INSERT INTO pdf2xls (User, SourceName, SourcePath, TargetPath, Result) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO WORD2PDF (User, SourceName, SourcePath, TargetPath, Result) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, pdf.getUser());
             ps.setString(2, pdf.getSourceName());
@@ -65,7 +65,7 @@ public class Data {
         }
     }
 
-    public PDF2XLS getStatusByID(Integer ID) {
+    public WORD2PDF getStatusByID(Integer ID) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
@@ -73,13 +73,12 @@ public class Data {
                 model.dao.ConnectInfo.dbuser,
                 model.dao.ConnectInfo.dbpass
             );
-            String query = "SELECT * FROM PDF2XLS WHERE ID = " + ID.toString();
+            String query = "SELECT * FROM WORD2PDF WHERE ID = " + ID.toString();
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
-            PDF2XLS pdf = new PDF2XLS();
+            WORD2PDF pdf = new WORD2PDF();
             while (rs.next()) {
-
                 pdf.setID(rs.getInt("ID"));
                 pdf.setUser(rs.getString("User"));
                 pdf.setSourceName(rs.getString("SourceName"));
@@ -99,7 +98,7 @@ public class Data {
         }
     }
 
-    public void setStatusResult(Integer ID, Integer result) {
+    public void setStatusResult(String sourcePath, Integer result) {
         try {
             // If result code is not from below code, return
             List<Integer> acceptable = new ArrayList<Integer>();
@@ -116,8 +115,10 @@ public class Data {
                 model.dao.ConnectInfo.dbuser,
                 model.dao.ConnectInfo.dbpass
             );
-            String query = "UPDATE pdf2xls SET Result = " + result.toString() + " WHERE ID = " + ID.toString();
+            String query = "UPDATE WORD2PDF SET Result = ? WHERE SourcePath = ?";
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, result);
+            ps.setString(2, sourcePath);
             ps.execute();
         }
         catch (Exception ex) {

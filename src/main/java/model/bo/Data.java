@@ -2,24 +2,24 @@ package model.bo;
 
 import java.util.List;
 
-import model.bean.PDF2XLS;
+import model.bean.WORD2PDF;
 
 public class Data {
     model.dao.Data data = new model.dao.Data();
 
-    public List<PDF2XLS> getStatusFromUser(String user) {
+    public List<WORD2PDF> getStatusFromUser(String user) {
         return data.getStatusFromUser(user);
     }
 
-    public void addStatus(PDF2XLS pdf) {
+    public void addStatus(WORD2PDF pdf) {
         data.addStatus(pdf);
     }
 
-    public PDF2XLS getStatusByID(Integer ID) {
+    public WORD2PDF getStatusByID(Integer ID) {
         return data.getStatusByID(ID);
     }
 
-    public void setStatusResult(Integer ID, Integer result) {
-        data.setStatusResult(ID, result);
+    public void setStatusResult(String sourcePath, Integer result) {
+        data.setStatusResult(sourcePath, result);
     }
 }

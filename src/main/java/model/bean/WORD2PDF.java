@@ -1,6 +1,6 @@
 package model.bean;
 
-public class PDF2XLS {
+public class WORD2PDF {
     private Integer ID;
     private String User;
     private String SourceName;

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 <%@ page language="java" import="java.util.ArrayList" %>
-<%@ page language="java" import="model.bean.PDF2XLS" %>
+<%@ page language="java" import="model.bean.WORD2PDF" %>
 
 <html>
 <head>
@@ -17,7 +17,7 @@
             <th>Download</th>
         </tr>
         <%
-            ArrayList<PDF2XLS> data = (ArrayList<PDF2XLS>)request.getAttribute("data");
+            ArrayList<WORD2PDF> data = (ArrayList<WORD2PDF>)request.getAttribute("data");
             for (int i = 0; i < data.size(); i++) {
         %>
             <tr>

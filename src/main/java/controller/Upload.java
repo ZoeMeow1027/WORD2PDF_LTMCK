@@ -7,7 +7,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 
-import model.bean.PDF2XLS;
+import model.bean.WORD2PDF;
 
 // https://openplanning.net/11069/upload-va-download-file-luu-tru-tren-o-cung-voi-java-servlet
 @WebServlet(urlPatterns = { "/upload" })
@@ -45,16 +45,16 @@ public class Upload extends HttpServlet {
                 throw new Exception("File upload is invaild name.");
 
             // Create new item.
-            PDF2XLS pdf = new PDF2XLS();
+            WORD2PDF pdf = new WORD2PDF();
             // User
             pdf.setUser(request.getSession().getAttribute("user").toString());
             // File original name
             pdf.setSourceName(Paths.get(part.getSubmittedFileName()).getFileName().toString());
-            String fileNameTemp = model.bo.Tools.GenerateString(24);
+            String fileNameTemp = model.bo.Tools.GenerateString(32);
             // File random source name
-            pdf.setSourcePath(HOME_DIRECTORY + "\\" + fileNameTemp + ".pdf");
+            pdf.setSourcePath(HOME_DIRECTORY + "\\" + fileNameTemp + ".docx");
             // File random name after convert
-            pdf.setTargetPath(HOME_DIRECTORY + "\\" + fileNameTemp + ".xlsx");
+            pdf.setTargetPath(HOME_DIRECTORY + "\\" + fileNameTemp + ".pdf");
             // Set status to 0 - pending
             pdf.setResult(0);
 
@@ -63,6 +63,8 @@ public class Upload extends HttpServlet {
             // New record to database
             model.bo.Data data = new model.bo.Data();
             data.addStatus(pdf);
+
+            controller.BackgroundWork.addToQueue(pdf);
 
             // Return to dashboard
             response.sendRedirect("dashboard");

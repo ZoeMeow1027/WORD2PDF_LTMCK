@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import model.bean.PDF2XLS;
+import model.bean.WORD2PDF;
 
 @WebServlet(urlPatterns = { "/download" })
 public class Download extends HttpServlet {
@@ -19,9 +19,10 @@ public class Download extends HttpServlet {
     ) throws ServletException, IOException
     {
         try {
+            // Load status from id
             Integer fileID = Integer.parseInt(request.getParameter("id"));
             model.bo.Data boData = new model.bo.Data();
-            PDF2XLS pdf = boData.getStatusByID(fileID);
+            WORD2PDF pdf = boData.getStatusByID(fileID);
 
             // If owner and logged in account is incorrent, return back to login
             Object user = request.getSession().getAttribute("user");
@@ -35,12 +36,17 @@ public class Download extends HttpServlet {
                 response.sendRedirect("index");
                 return;
             }
+            // If not successful, deny download
+            if (pdf.getResult() != 2) {
+                response.sendRedirect("dashboard");
+                return;
+            }
 
             // https://stackjava.com/jsp-servlet/jsp-servlet-download-file.html
             Path path = Paths.get(pdf.getTargetPath());
             byte[] data = Files.readAllBytes(path);
             response.setContentType("application/octet-stream");
-            response.setHeader("Content-disposition", "attachment; filename=" + pdf.getSourceName() + ".xlsx");
+            response.setHeader("Content-disposition", "attachment; filename=" + pdf.getSourceName() + ".pdf");
             response.setContentLength(data.length);
             InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
 
