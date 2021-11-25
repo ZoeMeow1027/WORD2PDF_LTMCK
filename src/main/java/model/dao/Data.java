@@ -58,6 +58,7 @@ public class Data {
             ps.setString(4, pdf.getSourcePath());
             ps.setInt(5, pdf.getResult());
 
+            ps.execute();
         }
         catch (Exception ex) {
             System.out.println(ex);
