@@ -36,6 +36,7 @@ public class Upload extends HttpServlet {
     ) throws ServletException, IOException
     {
         try {
+            request.setCharacterEncoding("UTF-8");
             Part part = request.getPart("file");
             if (part == null)
                 throw new Exception("Something went wrong.");

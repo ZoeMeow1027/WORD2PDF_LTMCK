@@ -1,3 +1,4 @@
 [Folder]
 target/*
 .settings/*
+.vs/*

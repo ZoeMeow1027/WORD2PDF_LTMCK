@@ -3,10 +3,10 @@ package model.bo;
 import java.io.*;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.poi.xwpf.converter.core.FileImageExtractor;
-import org.apache.poi.xwpf.converter.pdf.PdfConverter;
-import org.apache.poi.xwpf.converter.pdf.PdfOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+
+import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
+import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
 
 public class WORD2PDF {
     static model.dao.Data data = new model.dao.Data();
@@ -23,13 +23,13 @@ public class WORD2PDF {
             String inputFile = word.getSourcePath();
             String outputFile = word.getTargetPath();
             
-            InputStream is = new FileInputStream(inputFile);
-            // FileInputStream is = new FileInputStream(new File(inputFile));
-            XWPFDocument doc = new XWPFDocument(is);
-
-            OutputStream os = new FileOutputStream(new File(outputFile));
-            PdfOptions option = PdfOptions.create().fontEncoding("UTF-8");
-            PdfConverter.getInstance().convert(doc, os, option); 
+            InputStream docFile = new FileInputStream(new File(inputFile));
+    		XWPFDocument doc = new XWPFDocument(docFile);
+    		PdfOptions pdfOptions = PdfOptions.create();
+    		OutputStream out = new FileOutputStream(new File(outputFile));
+    		PdfConverter.getInstance().convert(doc, out, pdfOptions);
+    		doc.close();
+    		out.close();
 
             // Set to successful
             System.out.println("Successful--------------------------------");
