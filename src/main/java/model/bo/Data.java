@@ -14,4 +14,8 @@ public class Data {
     public void addStatus(PDF2XLS pdf) {
         data.addStatus(pdf);
     }
+
+    public PDF2XLS getStatusByID(Integer ID) {
+        return data.getStatusByID(ID);
+    }
 }

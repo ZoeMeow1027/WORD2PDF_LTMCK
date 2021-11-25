@@ -24,7 +24,7 @@
                 <td><%= data.get(i).getID() %></td>
                 <td><%= data.get(i).getSourceName() %></td>
                 <td><%= data.get(i).getResultString() %></td>
-                <td><a href="">Download</a></td>
+                <td><a href="download?id=<%= data.get(i).getID() %>">Download</a></td>
             </tr>
         <% } %>
     </table>

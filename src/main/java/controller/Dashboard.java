@@ -19,10 +19,14 @@ public class Dashboard extends HttpServlet {
     ) throws ServletException, IOException
     {
         model.bo.Data data = new model.bo.Data();
+        
+        Object user = request.getSession().getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("index");
+            return;
+        }
 
-        // TODO: Replace user here.
-        String user = request.getSession().getAttribute("user").toString();
-        request.setAttribute("data", data.getStatusFromUser(user));
+        request.setAttribute("data", data.getStatusFromUser(user.toString()));
         String urlTarget = "/dashboard.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
 		rd.forward(request, response);
