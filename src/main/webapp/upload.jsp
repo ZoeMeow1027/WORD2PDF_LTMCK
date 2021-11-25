@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" session="true" %>
 
 <html>
 <head>
@@ -8,9 +8,8 @@
 <body>
     <h1>Upload file</h1>
     <form action="Upload" method="post">
-        <label>Account: </label><label name="user">admin</label><br>
-        <label>Upload file: </label><input type="file" name="file"><br>
-        
+        <h3>Account: <%= request.getSession().getAttribute("user") == null ? "Unknown" : request.getSession().getAttribute("user").toString() %></h3>
+        <label>File to upload: </label><input type="file" name="file"><br>
         <br>
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">

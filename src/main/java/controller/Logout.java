@@ -8,23 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = { "/dashboard" })
-public class Dashboard extends HttpServlet {
+@WebServlet(urlPatterns = { "/logout" })
+public class Logout  extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+
     protected void doGet(
         HttpServletRequest request,
         HttpServletResponse response
     ) throws ServletException, IOException
     {
-        model.bo.Data data = new model.bo.Data();
+        HttpSession session = request.getSession();
+        session.invalidate();
 
-        // TODO: Replace user here.
-        String user = request.getSession().getAttribute("user").toString();
-        request.setAttribute("data", data.getStatusFromUser(user));
-        String urlTarget = "/dashboard.jsp";
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
-		rd.forward(request, response);
+        String urlTarget = "index";
+        response.sendRedirect(urlTarget);
     }
 }

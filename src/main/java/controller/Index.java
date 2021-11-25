@@ -18,8 +18,22 @@ public class Index extends HttpServlet {
         HttpServletResponse response
     ) throws ServletException, IOException
     {
-        String urlTarget = "/index.jsp";
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
-        rd.forward(request, response);
+        try {
+            Object obj = request.getSession().getAttribute("user");
+            if (obj == null)
+                throw new Exception("User is not exist!");
+
+            String user = obj.toString();
+            if (user != null && !user.isEmpty()) {
+                String urlTarget = "/main.jsp";
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
+                rd.forward(request, response);    
+            }
+            else throw new Exception("User is not exist!");
+        }
+        catch (Exception ex) {
+            String urlTarget = "login";
+            response.sendRedirect(urlTarget);
+        }
     }
 }

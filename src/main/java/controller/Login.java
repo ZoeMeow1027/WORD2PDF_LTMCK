@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = { "/login" })
 public class Login extends HttpServlet {
@@ -34,9 +35,11 @@ public class Login extends HttpServlet {
 
         model.bo.Login bo = new model.bo.Login();
         if (bo.isVaildUser(username, password)) {
-            urlTarget = "Index";
+            HttpSession session = request.getSession();
+            session.setAttribute("user", username);
+            urlTarget = "index";
         } else {
-            urlTarget = "Login";
+            urlTarget = "login";
         }
 
         response.sendRedirect(urlTarget);
