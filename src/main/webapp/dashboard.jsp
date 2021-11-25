@@ -28,7 +28,9 @@
             </tr>
         <% } %>
     </table>
-    <a href="dashboard"><h3>Refresh</h3></a>
-    <a href="index"><h3>Return back</h3></a>
+    <h3>Logged in as <%= request.getSession().getAttribute("user") == null ? "Unknown" : request.getSession().getAttribute("user").toString() %></h3>
+    <a href="dashboard"><h4>Refresh</h4></a>
+    <a href="upload"><h4>New convert</h4></a>
+    <a href="logout"><h4>Logout</h4></a>
 </body>
 </html>

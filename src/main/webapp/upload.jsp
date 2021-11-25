@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Upload file</h1>
-    <form action="Upload" method="post">
+    <form action="Upload" method="post" enctype="multipart/form-data">
         <h3>Account: <%= request.getSession().getAttribute("user") == null ? "Unknown" : request.getSession().getAttribute("user").toString() %></h3>
         <label>File to upload: </label><input type="file" name="file"><br>
         <br>

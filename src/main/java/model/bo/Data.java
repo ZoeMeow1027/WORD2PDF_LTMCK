@@ -10,4 +10,8 @@ public class Data {
     public List<PDF2XLS> getStatusFromUser(String user) {
         return data.getStatusFromUser(user);
     }
+
+    public void addStatus(PDF2XLS pdf) {
+        data.addStatus(pdf);
+    }
 }

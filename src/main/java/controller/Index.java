@@ -25,9 +25,11 @@ public class Index extends HttpServlet {
 
             String user = obj.toString();
             if (user != null && !user.isEmpty()) {
-                String urlTarget = "/main.jsp";
-                RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
-                rd.forward(request, response);    
+                String urlTarget = "dashboard";
+                response.sendRedirect(urlTarget);
+                // String urlTarget = "/main.jsp";
+                // RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
+                // rd.forward(request, response);    
             }
             else throw new Exception("User is not exist!");
         }
