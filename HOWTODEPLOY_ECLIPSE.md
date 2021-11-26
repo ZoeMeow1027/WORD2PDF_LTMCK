@@ -24,7 +24,7 @@ After execute query file, it will look like this:
 
 ![Open project from Eclipse](img/7.png)
 
-2.3. Next to Import source, click ```Archive...``` and locate to zip file you downloaded from step 3.
+2.3. Next to Import source, click ```Archive...``` and locate to zip file you downloaded from step 2.1.
 
 ![Open project from Eclipse](img/8.png)
 
@@ -60,7 +60,7 @@ Click ```Add All >>``` to config all project for server, then click ```Finish```
 
 ![Open project from Eclipse](img/16.png)
 
-4.2. Click server you created on step 9 and click ```Finish```.
+4.2. Click server you created on step 3 and click ```Finish```.
 
 ![Open project from Eclipse](img/17.png)
 
