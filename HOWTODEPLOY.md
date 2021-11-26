@@ -1,6 +1,7 @@
 ## WORD2PDF - How to deploy
 
 1. Create a database project in MySQL and named it "ltmck".
+
 ![Create database](img/1.png)
 
 2. Use "ltmck", execute query in [table.sql](table.sql) to create two tables and a admin account (you need to edit this file if you want to create new and multi user):
@@ -8,6 +9,7 @@
    - Word2PDF: Store conversion progress.
 
 After execute query file, it will look like this:
+
 ![Completing database](img/2.png)
 
 3. Edit web app config. [View in README.md](README.md#Config)
