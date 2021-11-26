@@ -12,9 +12,9 @@ public class Login {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                model.dao.ConnectInfo.url,
-                model.dao.ConnectInfo.dbuser,
-                model.dao.ConnectInfo.dbpass
+                config.Config.dbUrl,
+                config.Config.dbUser,
+                config.Config.dbPass
             );    
             Statement stmt = con.createStatement();
             String query = "SELECT * FROM Account WHERE User = '" +  username + "'";            

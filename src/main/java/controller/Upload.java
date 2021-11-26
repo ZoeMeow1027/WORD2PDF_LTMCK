@@ -16,7 +16,6 @@ import model.bean.WORD2PDF;
        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class Upload extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static final String HOME_DIRECTORY = "D:\\Documents\\ltmck";
 
     @Override
     protected void doGet(
@@ -53,9 +52,9 @@ public class Upload extends HttpServlet {
             pdf.setSourceName(Paths.get(part.getSubmittedFileName()).getFileName().toString());
             String fileNameTemp = model.bo.Tools.GenerateString(32);
             // File random source name
-            pdf.setSourcePath(HOME_DIRECTORY + "\\" + fileNameTemp + ".docx");
+            pdf.setSourcePath(config.Config.dirTemp + "\\" + fileNameTemp + ".docx");
             // File random name after convert
-            pdf.setTargetPath(HOME_DIRECTORY + "\\" + fileNameTemp + ".pdf");
+            pdf.setTargetPath(config.Config.dirTemp + "\\" + fileNameTemp + ".pdf");
             // Set status to 0 - pending
             pdf.setResult(0);
 

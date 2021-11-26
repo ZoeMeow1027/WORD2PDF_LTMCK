@@ -13,9 +13,9 @@ public class Data {
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                model.dao.ConnectInfo.url,
-                model.dao.ConnectInfo.dbuser,
-                model.dao.ConnectInfo.dbpass
+                config.Config.dbUrl,
+                config.Config.dbUser,
+                config.Config.dbPass
             );    
             Statement stmt = con.createStatement();
             String query = "SELECT * FROM WORD2PDF WHERE User = '" + user + "'";
@@ -45,9 +45,9 @@ public class Data {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                model.dao.ConnectInfo.url,
-                model.dao.ConnectInfo.dbuser,
-                model.dao.ConnectInfo.dbpass
+                config.Config.dbUrl,
+                config.Config.dbUser,
+                config.Config.dbPass
             );
             // https://stackoverflow.com/a/10167435    
             String query = "INSERT INTO WORD2PDF (User, SourceName, SourcePath, TargetPath, Result) VALUES (?, ?, ?, ?, ?)";
@@ -69,9 +69,9 @@ public class Data {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                model.dao.ConnectInfo.url,
-                model.dao.ConnectInfo.dbuser,
-                model.dao.ConnectInfo.dbpass
+                config.Config.dbUrl,
+                config.Config.dbUser,
+                config.Config.dbPass
             );
             String query = "SELECT * FROM WORD2PDF WHERE ID = " + ID.toString();
             PreparedStatement ps = con.prepareStatement(query);
@@ -111,9 +111,9 @@ public class Data {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                model.dao.ConnectInfo.url,
-                model.dao.ConnectInfo.dbuser,
-                model.dao.ConnectInfo.dbpass
+                config.Config.dbUrl,
+                config.Config.dbUser,
+                config.Config.dbPass
             );
             String query = "UPDATE WORD2PDF SET Result = ? WHERE SourcePath = ?";
             PreparedStatement ps = con.prepareStatement(query);
