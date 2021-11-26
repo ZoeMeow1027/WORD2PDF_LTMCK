@@ -52,6 +52,8 @@ Config:
 
 Because this how-to-deploy contains many images, so this is very loooooong to write here. [Click here](HOWTODEPLOY.md) for view instruction.
 
+Using Eclipse Java EE? [Click here](HOWTODEPLOY_ECLIPSE.md) for eclipse project instruction.
+
 [\[Go to top\]](#Word2PDF)
 
 ## Testing
@@ -61,3 +63,4 @@ To check web app, just open browser and navigate to: http://127.0.0.1:(port)/ltm
 Ex. http://127.0.0.1:8080/ltmcuoiky/
 
 [\[Go to top\]](#Word2PDF)
+

@@ -1,5 +1,7 @@
 ## WORD2PDF - How to deploy
 
+### 1. Set up database
+
 1. Create a database project in MySQL and named it "ltmck".
 
 ![Create database](img/1.png)
@@ -12,7 +14,9 @@ After execute query file, it will look like this:
 
 ![Completing database](img/2.png)
 
-3. Edit web app config. [View in README.md](README.md#Config)
+### 2. Set up project
+
+2.1. Open project, edit web app config. [View in README.md](README.md#Config)
 
 Ex. Below is my config:
 ```java
@@ -22,23 +26,34 @@ public static String dbPass = "cloney1301";
 public static String dirTemp = "D:\\Documents\\ltmck";
 ```
 
-4. Compile it using MVN: ```mvn clean package```. If this is done successfully, in directory you will found:
+2.2. Compile it using MVN: ```mvn clean package```. If this is done successfully, in directory you will found:
    - WAR file:
      > ```target/ltmcuoiky.war```
    - JSP directory:
      > ```target/ltmcuoiky```
+
 ![Compiled Successful](img/4.png)
 
-5. Use file and folder in step 4, deploy to tomcat servers
+### 3. Set up tomcat and run
+
+Use file and folder in step 4, deploy to tomcat servers.
 
 Ex: My tomcat folder is ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\``` and set up server port is ```8080```:
 ![Tomcat directory](img/5.1.png)
-   - Copy to tomcat server -> webapps folder (ex. ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\webapps```)
-     ![Copy to tomcat web app](img/5.2.png)
-   - Start tomcat server:
-     > ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\bin\startup.bat```.
-     - Make sure you config tomcat server right before start.
-     - After start, this will display a console for tomcat server. You can check System.out.println() if exist.
-     ![Tomcat directory](img/5.3.png)
+
+
+3.1. Copy to tomcat server -> webapps folder (ex. ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\webapps```)
+
+![Copy to tomcat web app](img/5.2.png)
+
+3.2. Start tomcat server:
+
+> ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\bin\startup.bat```.
+
+- Make sure you config tomcat server right before start.
+- After start, this will display a console for tomcat server. You can check System.out.println() if exist.
+
+![Tomcat directory](img/5.3.png)
 
 You are done for deployment. Enjoy!
+
