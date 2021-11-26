@@ -18,7 +18,7 @@ Below is these tools for building and debugging this web app.
 
 If you have already installed them, just skip.
 
-- [Java JDK]. I'm using Temurin jdk17 hotspot 17 - 17.0.1.1200.
+- Java JDK. I'm using Temurin jdk17 hotspot 17 - 17.0.1.1200.
   - You can get them from [chocolately](https://community.chocolatey.org/packages/Temurin#description).
 - [Apache Maven - MVN](https://maven.apache.org/download.cgi) - I'm using v3.8.4
   - This tool is used for compile and package web apps. 
