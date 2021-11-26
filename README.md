@@ -7,7 +7,7 @@ A simple jsp servlet web app for converting Word (.docx) to PDF.
   - [Just run project](#Just-run-project)
   - [For debugging](#For-debugging)
 - [Config](#Config)
-- [Getting started - How to install?](#Getting-started-how-to-install)
+- [Getting started - How to deploy?](#Getting-started-how-to-deploy)
 - [Testing](#Testing)
 
 ## Requirements
@@ -48,21 +48,9 @@ Config:
 
 [\[Go to top\]](#Word2PDF)
 
-## Getting started - How to install?
+## Getting started - How to deploy?
 
-1. Create a database project in MySQL and named it "ltmck".
-2. Use "ltmck", execute [table.sql](table.sql) to create two tables and a admin account (you need to edit this file if you want to create new and multi user):
-  - Account: Store account information.
-  - Word2PDF: Store conversion progress.
-3. Edit web app config. [See here](#Config)
-4. Compile it using MVN: ```mvn clean package```. If this is done successfully, in directory you will found:
-  - WAR file: ```target/ltmcuoiky.war```
-  - JSP directory: ```target/ltmcuoiky```
-5. Use file and folder in step 4, deploy to tomcat servers (ex: My tomcat folder is ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\``` and set up server port is ```8080```):
-  - Copy to tomcat server -> webapps folder (ex. ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\webapps```)
-  - Start tomcat server: ```D:\Programs\0.Programming\apache-tomcat-9.0.54-windows-x64\bin\startup.bat```. Make sure you config tomcat server right before start.
-
-You are done. Enjoy!
+Because this how-to-deploy contains many images, so this is very loooooong to write here. [Click here](HOWTODEPLOY.md) for view instruction.
 
 [\[Go to top\]](#Word2PDF)
 
