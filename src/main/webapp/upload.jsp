@@ -5,6 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Upload</title>
 </head>
+<style>
+    body { text-align:center;
+        background-color:pink;
+    }
+</style>
 <body>
     <h1>Upload file (.docx)</h1>
     <form action="upload" method="post" enctype="multipart/form-data">

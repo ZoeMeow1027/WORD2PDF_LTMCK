@@ -7,6 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Dashboard</title>
 </head>
+<style>
+    body { text-align: center;
+        background-color: #F0F8FF;
+        }
+</style>
 <body>
     <table border="1" width="100%">
         <caption><h1>Dashboard</h1></caption>
@@ -29,8 +34,11 @@
         <% } %>
     </table>
     <h3>Logged in as <%= request.getSession().getAttribute("user") == null ? "Unknown" : request.getSession().getAttribute("user").toString() %></h3>
-    <a href="dashboard"><h4>Refresh</h4></a>
-    <a href="upload"><h4>New convert</h4></a>
-    <a href="logout"><h4>Logout</h4></a>
+	<a href="dashboard"><input type="button" value="Refresh"></a><br>
+	<br>
+	<a href="upload"><input type="button" value="New Convert"></a><br>
+	<br>
+	<a href="logout"><input type="button" value="Log Out"></a><br>
+	<br>
 </body>
 </html>
