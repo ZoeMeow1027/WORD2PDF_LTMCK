@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.*;
+import java.net.URLEncoder;
 import java.nio.file.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,12 +42,13 @@ public class Download extends HttpServlet {
                 response.sendRedirect("dashboard");
                 return;
             }
+            
 
             // https://stackjava.com/jsp-servlet/jsp-servlet-download-file.html
             Path path = Paths.get(pdf.getTargetPath());
             byte[] data = Files.readAllBytes(path);
-            response.setContentType("application/octet-stream");
-            response.setHeader("Content-disposition", "attachment; filename=" + pdf.getSourceName() + ".pdf");
+            response.setContentType("application/pdf; charset=UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + URLEncoder.encode(pdf.getSourceName(), "UTF-8") + ".pdf\"");
             response.setContentLength(data.length);
             InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
 
