@@ -19,6 +19,10 @@ CREATE TABLE WORD2PDF(
 	SourcePath TEXT,
 	-- file after successfully processed
 	TargetPath TEXT,
+	-- date start
+	DateStart DATETIME,
+	-- date finish
+	DateCompleted DATETIME,
 	-- -1: error, 0: pending, 1: processing, 2: successful
 	Result INT DEFAULT 0,
 	FOREIGN KEY (User) REFERENCES Account(User) 

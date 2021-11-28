@@ -1,8 +1,7 @@
 package model.bo;
 
 import java.io.*;
-import java.util.concurrent.TimeUnit;
-
+import java.sql.Timestamp;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
@@ -14,7 +13,8 @@ public class WORD2PDF {
     public static void ConvertToPDF(model.bean.WORD2PDF word) {
         try {
             // Set to coverting...
-            data.setStatusResult(word.getSourcePath(), 1);
+            // https://www.tabnine.com/code/java/methods/java.sql.PreparedStatement/setDate
+            data.setStatusResult(word.getSourcePath(), new Timestamp(System.currentTimeMillis()), 1);
 
             // TimeUnit.SECONDS.sleep(10);
 
@@ -33,13 +33,13 @@ public class WORD2PDF {
 
             // Set to successful
             System.out.println("Successful--------------------------------");
-            data.setStatusResult(word.getSourcePath(), 2);
+            data.setStatusResult(word.getSourcePath(), new Timestamp(System.currentTimeMillis()), 2);
         }
         catch (Exception ex) {
             // Failed
             System.out.println(ex);
             System.out.println("Failed--------------------------------");
-            data.setStatusResult(word.getSourcePath(), -1);
+            data.setStatusResult(word.getSourcePath(), new Timestamp(System.currentTimeMillis()), -1);
         }
     }
 }

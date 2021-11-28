@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-
+import java.sql.Timestamp;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
@@ -23,6 +23,12 @@ public class Upload extends HttpServlet {
         HttpServletResponse response
     ) throws ServletException, IOException
     {
+        Object user = request.getSession().getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("index");
+            return;
+        }
+        
         String urlTarget = "/upload.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(urlTarget);
 		rd.forward(request, response);
@@ -55,6 +61,8 @@ public class Upload extends HttpServlet {
             pdf.setSourcePath(config.Config.dirTemp + "\\" + fileNameTemp + ".docx");
             // File random name after convert
             pdf.setTargetPath(config.Config.dirTemp + "\\" + fileNameTemp + ".pdf");
+            // Set date start
+            pdf.setDateStart(new Timestamp(System.currentTimeMillis()));
             // Set status to 0 - pending
             pdf.setResult(0);
 

@@ -1,29 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" session="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+    <meta content="text/html;" charset="UTF-8">
+    <title>Word2PDF - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
-    <h1>Login</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 3%;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index">WORD2PDF</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload">Upload</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <span class="navbar-text">Not logged in&nbsp;&nbsp;</span>
+                <button class="btn btn-sm btn-outline-secondary active" type="button">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <div style="width: 75%; margin: auto;">
+        <h1>Login</h1>
+        <h3>Before continue, you need to login with your account first.</h3>
+        <br>
         <form action="<%=request.getContextPath()%>/login" method="post">
             <div class="form-group">
             <label for="uname">User Name:</label> <input type="text"
                 class="form-control" id="username" placeholder="User Name"
                 name="username" required>
             </div>
+            <br>
             <div class="form-group">
                 <label for="uname">Password:</label>
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
             </div>
+            <br>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </form>    
     </div>
 </body>
 </html>

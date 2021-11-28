@@ -21,8 +21,8 @@ public class Login {
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
-                if (rs.getString("User").equals(username.toLowerCase())) {
-                    if (rs.getString("Pass").equals(password.toLowerCase())) {
+                if (rs.getString("User").toLowerCase().equals(username.toLowerCase())) {
+                    if (rs.getString("Pass").equals(password)) {
                         result = true;
                         break;
                     }

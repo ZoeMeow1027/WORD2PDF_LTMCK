@@ -1,14 +1,30 @@
 package model.bean;
 
+import java.sql.Timestamp;
+
 public class WORD2PDF {
     private Integer ID;
     private String User;
     private String SourceName;
     private String SourcePath;
     private String TargetPath;
+    private Timestamp DateStart;
+    private Timestamp DateCompleted;
     private Integer Result;
     public Integer getID() {
         return ID;
+    }
+    public Timestamp getDateCompleted() {
+        return DateCompleted;
+    }
+    public void setDateCompleted(Timestamp dateCompleted) {
+        this.DateCompleted = dateCompleted;
+    }
+    public Timestamp getDateStart() {
+        return DateStart;
+    }
+    public void setDateStart(Timestamp dateStart) {
+        this.DateStart = dateStart;
     }
     public Integer getResult() {
         return Result;

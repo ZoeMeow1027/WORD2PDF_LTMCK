@@ -1,5 +1,6 @@
 package model.bo;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import model.bean.WORD2PDF;
@@ -19,7 +20,7 @@ public class Data {
         return data.getStatusByID(ID);
     }
 
-    public void setStatusResult(String sourcePath, Integer result) {
-        data.setStatusResult(sourcePath, result);
+    public void setStatusResult(String sourcePath, Timestamp ts, Integer result) {
+        data.setStatusResult(sourcePath, ts, result);
     }
 }

@@ -28,6 +28,8 @@ public class Data {
                 item.setSourceName(rs.getString("SourceName"));
                 item.setSourcePath(rs.getString("SourcePath"));
                 item.setTargetPath(rs.getString("TargetPath"));
+                item.setDateStart(rs.getTimestamp("DateStart"));
+                item.setDateCompleted(rs.getTimestamp("DateCompleted"));
                 item.setResult(rs.getInt("Result"));
 
                 list.add(item);
@@ -50,13 +52,14 @@ public class Data {
                 config.Config.dbPass
             );
             // https://stackoverflow.com/a/10167435    
-            String query = "INSERT INTO WORD2PDF (User, SourceName, SourcePath, TargetPath, Result) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO WORD2PDF (User, SourceName, SourcePath, TargetPath, DateStart, Result) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, pdf.getUser());
             ps.setString(2, pdf.getSourceName());
             ps.setString(3, pdf.getSourcePath());
             ps.setString(4, pdf.getTargetPath());
-            ps.setInt(5, pdf.getResult());
+            ps.setTimestamp(5, pdf.getDateStart());
+            ps.setInt(6, pdf.getResult());
 
             ps.execute();
         }
@@ -84,8 +87,9 @@ public class Data {
                 pdf.setSourceName(rs.getString("SourceName"));
                 pdf.setSourcePath(rs.getString("SourcePath"));
                 pdf.setTargetPath(rs.getString("TargetPath"));
+                pdf.setDateStart(rs.getTimestamp("DateStart"));
+                pdf.setDateCompleted(rs.getTimestamp("DateCompleted"));
                 pdf.setResult(rs.getInt("Result"));
-                
                 break;
             }
             rs.close();
@@ -98,7 +102,7 @@ public class Data {
         }
     }
 
-    public void setStatusResult(String sourcePath, Integer result) {
+    public void setStatusResult(String sourcePath, Timestamp ts, Integer result) {
         try {
             // If result code is not from below code, return
             List<Integer> acceptable = new ArrayList<Integer>();
@@ -115,11 +119,14 @@ public class Data {
                 config.Config.dbUser,
                 config.Config.dbPass
             );
-            String query = "UPDATE WORD2PDF SET Result = ? WHERE SourcePath = ?";
+            String query = "UPDATE WORD2PDF SET Result = ?, DateCompleted = ? WHERE SourcePath = ?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, result);
-            ps.setString(2, sourcePath);
+            ps.setTimestamp(2, ts);
+            ps.setString(3, sourcePath);
             ps.execute();
+
+            
         }
         catch (Exception ex) {
             System.out.println(ex);
