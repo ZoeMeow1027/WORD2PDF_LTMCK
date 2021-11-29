@@ -3,12 +3,18 @@
 A simple jsp servlet web app for converting Word (.docx) to PDF.
 
 # Table of Contents
+- [Screenshots](#Screenshots)
 - [Requirements](#Requirements)
   - [Just run project](#Just-run-project)
   - [For debugging](#For-debugging)
 - [Config](#Config)
 - [Getting started - How to deploy?](#getting-started---how-to-deploy)
 - [Testing](#Testing)
+
+## Screenshots
+![Login](img/Screenshot_1.png)
+![Dashboard](img/Screenshot_2.png)
+![Upload](img/Screenshot_3.png)
 
 ## Requirements
 

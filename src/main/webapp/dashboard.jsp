@@ -38,7 +38,8 @@
     <div style="width: 75%; margin: auto;">
         <h1>Dashboard</h1>
         <h3>Show processing info about file which user uploaded.</h3>
-
+        <br>
+        
         <table border="1" width=100%>
             <tr>
                 <th>ID</th>
